@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// Bootswatch theme
 import './assets/bootswatch/bootstrap.css';
 
 import './css/index.css';
