@@ -17,7 +17,7 @@ class About extends Component {
             <h2 className="about__headline mb-0">How it works</h2>
           </Col>
         </Row>
-        <Row className="about__row--choices">
+        <Row noGutters className="about__row--choices">
           <Col xs="12" md="4">
             <div className="about__content-container text-center">
               <FontAwesomeIcon className="about__icon" icon="wine-glass" size="3x" />
