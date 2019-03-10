@@ -12,7 +12,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <Container className="header__container">
-          <Navbar bg="dark" variant="dark" fixed="top" expand="lg">
+          <Navbar variant="dark" fixed="top" expand="lg">
             <Navbar.Brand href="#home">DateNight</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-toggler" />
             <Navbar.Collapse id="navbar-toggler">
