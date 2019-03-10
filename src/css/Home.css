@@ -1,16 +1,13 @@
-.Home {
+.home__container {
   background: linear-gradient(
   rgba(0, 0, 0, 0.5),
   rgba(0, 0, 0, 0.5)),
     url('../assets/imgs/sunset-kiss.jpg');
   background-size: 100% 100%;
-  height: 100vh;
-}
-
-.home__container {
-  text-align: center;
-  padding: 240px 128px 128px;
   color: #FDF6E3;
+  height: 100vh;
+  padding: 240px 128px 128px;
+  text-align: center;
 }
 
 .home__headline {

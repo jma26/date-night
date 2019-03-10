@@ -1,0 +1,16 @@
+.About {
+  padding: 64px 0px;
+  background-color: #FCF6C5;
+}
+
+.about__row--title {
+  margin-bottom: 24px;
+}
+
+.about__headline, .about__content-title, .about__content-text {
+  color: #000;
+}
+
+.about__icon {
+  margin-bottom: 16px;
+}

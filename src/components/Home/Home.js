@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../../css/Home.css';
 
+import About from '../About/About';
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class Home extends Component {
           <p className="home__content">With DateNight, planning becomes quick and easy</p>
           <input className="home__button" type="button" value="Try Now!" />
         </div>
+        <About />
       </div>
     )
   }
