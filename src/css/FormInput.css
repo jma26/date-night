@@ -1,0 +1,13 @@
+.FormInput {
+  height: 50vh;
+}
+
+.forminput__form {
+  padding: 48px 0px;
+}
+
+label[for='form-location'], label[for='form-drink'], label[for='form-cuisine'], label[for='form-dessert'] {
+  font-size: 20px;
+}
+
+
