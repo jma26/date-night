@@ -1,4 +1,10 @@
-.navbar {
-  margin: 0 auto;
-  max-width: 1300px;
+.navbar--fixed {
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+.navbar--scroll {
+  background-color: #141823;
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
 }

@@ -11,19 +11,19 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <Container className="header__container">
-          <Navbar variant="dark" fixed="top" expand="lg">
-            <Navbar.Brand href="#home">DateNight</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbar-toggler" />
-            <Navbar.Collapse id="navbar-toggler">
-              <Nav className="ml-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">About</Nav.Link>
-                <Nav.Link href="#contact">Contact</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
+          <Navbar variant="dark" fixed="top" expand="lg" className={this.props.isTop ? 'navbar--fixed' : 'navbar--scroll'}>
+            <Container>
+              <Navbar.Brand href="#home">DateNight</Navbar.Brand>
+              <Navbar.Toggle aria-controls="navbar-toggler" />
+              <Navbar.Collapse id="navbar-toggler">
+                <Nav className="ml-auto">
+                  <Nav.Link href="#home">Home</Nav.Link>
+                  <Nav.Link href="#link">About</Nav.Link>
+                  <Nav.Link href="#contact">Contact</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
           </Navbar>
-        </Container>
       </div>
     )
   }
