@@ -1,0 +1,4 @@
+export const LOCATION = 'ADD_LOCATION';
+export const DRINK_CHOICE = 'DRINK_CHOICE';
+export const CUISINE_CHOICE = 'CUISINE_CHOICE';
+export const DESSERT_CHOICE = 'DESSERT_CHOICE';
