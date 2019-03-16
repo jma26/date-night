@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../css/FormInput.css';
 
-import { Form, Row, Col } from 'react-bootstrap';
+import { Form, Row, Col, Button } from 'react-bootstrap';
 
 class FormInput extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class FormInput extends Component {
             <div className="FormInput">
               <Row noGutters className="justify-content-center">
                 <Col xs="6" md="3" lg="2">
-                  <Form className="forminput__form">
+                  <Form className="forminput__form" onSubmit={(e) => this.props.onSubmit(e)}>
                     <Form.Group controlId="form-location">
                       <Form.Label>Location</Form.Label>
                       <Form.Control type="text" name="location" value={this.props.location} placeholder="City" onChange={(e) => this.props.onChange(e)} />
@@ -65,6 +65,9 @@ class FormInput extends Component {
                       </Form.Control>
                     </Form.Group>
 
+                    <Button variant="primary" type="submit">
+                      Submit
+                    </Button>
                   </Form>
                 </Col>
               </Row>

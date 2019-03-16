@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import '../../css/App.css';
 
+import { connect } from 'react-redux';
+import { location, dessertChoice, drinkChoice, cuisineChoice} from '../../actions';
+
 import Home from '../Home/Home';
 import Header from '../Header/Header';
 
@@ -22,6 +25,7 @@ class App extends Component {
       dessert: 'Ice cream',
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +44,14 @@ class App extends Component {
     })
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updateLocation(this.state.location);
+    this.props.updateCuisine(this.state.drink);
+    this.props.updateDrink(this.state.cuisine);
+    this.props.updateDessert(this.state.dessert);
+  }
+
   render() {
     return (
       <div className="App">
@@ -56,6 +68,7 @@ class App extends Component {
                   cuisine={this.state.cuisine}
                   dessert={this.state.dessert}
                   onChange={this.handleChange}
+                  onSubmit={this.handleSubmit}
                 />
               }
             />
@@ -66,4 +79,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    updateLocation: (input) => {
+      dispatch(location(input));
+    },
+    updateDessert: (input) => {
+      dispatch(dessertChoice(input));
+    },
+    updateDrink: (input) => {
+      dispatch(drinkChoice(input));
+    },
+    updateCuisine: (input) => {
+      dispatch(cuisineChoice(input));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
