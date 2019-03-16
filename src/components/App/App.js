@@ -16,7 +16,12 @@ class App extends Component {
     super(props);
     this.state = {
       isTop: true,
+      location: '',
+      drink: 'Wine',
+      cuisine: 'Chinese',
+      dessert: 'Ice cream',
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,13 +33,32 @@ class App extends Component {
     });
   }
 
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header isTop={this.state.isTop} />
         <Container fluid className="app__container pl-0 pr-0">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact path="/"
+              render={(props) =>
+                <Home
+                  {...props}
+                  location={this.state.location}
+                  drink={this.state.drink}
+                  cuisine={this.state.cuisine}
+                  dessert={this.state.dessert}
+                  onChange={this.handleChange}
+                />
+              }
+            />
           </Switch>
         </Container>
       </div>

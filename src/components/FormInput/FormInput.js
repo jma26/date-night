@@ -16,12 +16,12 @@ class FormInput extends Component {
                   <Form className="forminput__form">
                     <Form.Group controlId="form-location">
                       <Form.Label>Location</Form.Label>
-                      <Form.Control type="text" placeholder="City" />
+                      <Form.Control type="text" name="location" value={this.props.location} placeholder="City" onChange={(e) => this.props.onChange(e)} />
                     </Form.Group>
 
                     <Form.Group controlId="form-drink">
                       <Form.Label>Drink choice</Form.Label>
-                      <Form.Control as="select">
+                      <Form.Control as="select" name="drink" value={this.props.drink} onChange={(e) => this.props.onChange(e)}>
                         <option value="Wine">Wine</option>
                         <option value="Beer">Beer</option>
                         <option value="Tea">Tea</option>
@@ -31,7 +31,7 @@ class FormInput extends Component {
 
                     <Form.Group controlId="form-cuisine">
                       <Form.Label>Cuisine choice</Form.Label>
-                      <Form.Control as="select">
+                      <Form.Control as="select" name="cuisine" value={this.props.cuisine} onChange={(e) => this.props.onChange(e)}>
                         <option value="Chinese">Chinese</option>
                         <option value="Japanese">Japanese</option>
                         <option value="American">American</option>
@@ -53,7 +53,7 @@ class FormInput extends Component {
 
                     <Form.Group controlId="form-dessert">
                       <Form.Label>Dessert choice</Form.Label>
-                      <Form.Control as="select">
+                      <Form.Control as="select" name="dessert" value={this.props.dessert} onChange={(e) => this.props.onChange(e)}>
                         <option value="Ice cream">Ice cream</option>
                         <option value="Gelato">Gelato</option>
                         <option value="Frozen yogurt">Frozen yogurt</option>

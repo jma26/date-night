@@ -18,7 +18,7 @@ class Home extends Component {
           <input className="home__button" type="button" value="Try Now!" />
         </div>
         <About />
-        <FormInput />
+        <FormInput {...this.props} />
       </div>
     )
   }
