@@ -14,15 +14,19 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faWineGlass, faUtensils, faIceCream } from '@fortawesome/free-solid-svg-icons';
 library.add(faWineGlass, faUtensils, faIceCream);
 
+const initialDateState = {
+  location: '',
+  drink: 'Wine',
+  cuisine: 'Chinese',
+  dessert: 'Ice cream',
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isTop: true,
-      location: '',
-      drink: 'Wine',
-      cuisine: 'Chinese',
-      dessert: 'Ice cream',
+      ...initialDateState
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,6 +54,9 @@ class App extends Component {
     this.props.updateCuisine(this.state.drink);
     this.props.updateDrink(this.state.cuisine);
     this.props.updateDessert(this.state.dessert);
+    this.setState({
+      ...initialDateState,
+    })
   }
 
   render() {
