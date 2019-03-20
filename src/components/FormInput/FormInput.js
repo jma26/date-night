@@ -16,7 +16,7 @@ class FormInput extends Component {
                   <Form className="forminput__form" onSubmit={(e) => this.props.onSubmit(e)}>
                     <Form.Group controlId="form-location">
                       <Form.Label>Location</Form.Label>
-                      <Form.Control type="text" name="location" value={this.props.location} placeholder="City" onChange={(e) => this.props.onChange(e)} />
+                      <Form.Control type="text" name="location" value={this.props.location} placeholder="City, State" onChange={(e) => this.props.onChange(e)} />
                     </Form.Group>
 
                     <Form.Group controlId="form-drink">
@@ -65,7 +65,7 @@ class FormInput extends Component {
                       </Form.Control>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" disabled={this.props.location.length < 1}>
                       Submit
                     </Button>
                   </Form>
