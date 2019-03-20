@@ -1,6 +1,24 @@
-import { FETCH_YELP_DATA } from './action_types';
+import { FETCH_YELP_SUCCESS, FETCH_YELP_FAIL } from './action_types';
+import axios from 'axios';
 
-export const fetchYelpData = (data) => ({
-  type: FETCH_YELP_DATA,
-  data,
+export const fetchYelpData = (data) => {
+  return (dispatch) => {
+    return axios.get('/business')
+    .then(response => {
+      dispatch(fetchYelpSuccess(response));
+    })
+    .catch(error => {
+      dispatch(fetchYelpFail(error));
+    })
+  }
+};
+
+export const fetchYelpSuccess = (response) => ({
+  type: FETCH_YELP_SUCCESS,
+  response
+});
+
+export const fetchYelpFail = (error) => ({
+  type: FETCH_YELP_FAIL,
+  error
 })
