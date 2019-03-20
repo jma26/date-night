@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleWare } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import rootReducers from './reducers';
 
@@ -15,11 +15,14 @@ import App from './components/App/App';
 
 import * as serviceWorker from './serviceWorker';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+
 const store = createStore(
   rootReducers,
-  applyMiddleWare(reduxThunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+  composeEnhancers(
+    applyMiddleware(reduxThunk),
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>
