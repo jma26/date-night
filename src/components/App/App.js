@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import '../../css/App.css';
 
 import { connect } from 'react-redux';
-import { location, dessertChoice, drinkChoice, cuisineChoice} from '../../actions';
+import { fetchYelpData } from '../../actions';
 
 import Home from '../Home/Home';
 import Header from '../Header/Header';
@@ -50,10 +50,13 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateLocation(this.state.location);
-    this.props.updateCuisine(this.state.drink);
-    this.props.updateDrink(this.state.cuisine);
-    this.props.updateDessert(this.state.dessert);
+    const formData = {
+      location: this.state.location,
+      drink: this.state.drink,
+      cuisine: this.state.cuisine,
+      dessert: this.state.dessert
+    };
+    this.props.fetchYelpData(formData);
     this.setState({
       ...initialDateState,
     })
@@ -88,17 +91,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateLocation: (input) => {
-      dispatch(location(input));
-    },
-    updateDessert: (input) => {
-      dispatch(dessertChoice(input));
-    },
-    updateDrink: (input) => {
-      dispatch(drinkChoice(input));
-    },
-    updateCuisine: (input) => {
-      dispatch(cuisineChoice(input));
+    fetchYelpData: (input) => {
+      dispatch(fetchYelpData(input));
     }
   }
 }

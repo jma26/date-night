@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import dateInfo from './dateInfo';
+import yelpData from './yelpData';
 
 export default combineReducers({
-  dateInfo,
+  yelpData,
 })
