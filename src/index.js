@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleWare } from 'redux';
+import reduxThunk from 'redux-thunk';
 import rootReducers from './reducers';
 
 // Bootswatch theme
@@ -16,6 +17,7 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(
   rootReducers,
+  applyMiddleWare(reduxThunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
