@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 const path = require('path');
 const app = express();
+const axios = require('axios');
 
 // PORT
 const PORT = process.env.PORT || 5000;
@@ -16,9 +17,21 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/businesss', (req, res) => {
-  console.log('Sending...');
-  res.send('Testing');
+// Axios Instances
+const businessInstance = axios.create({
+  baseUrl: 'https://api.yelp.com/v3/'
+})
+businessInstance.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
+
+app.post('/business', (req, res) => {
+    let parameters = {
+      ...req.body
+    }
+    console.log(parameters);
+  // businessInstance.get(`businesses/search`, {
+
+  // })
+  res.send('Response successful from /business');
 })
 
 // Catch all requests

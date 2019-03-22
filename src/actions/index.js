@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchYelpData = (data) => {
   return (dispatch) => {
-    return axios.get('/business')
+    return axios.post('/business', data)
     .then(response => {
       dispatch(fetchYelpSuccess(response));
     })
