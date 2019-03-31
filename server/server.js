@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
 
 app.post('/business', (req, res) => {
+  const result = [];
   let parameters = {
     ...req.body
   }
@@ -69,12 +70,20 @@ app.post('/business', (req, res) => {
   const drinkInstance = axios.create(drinkConfig);
   const dessertInstance = axios.create(dessertConfig);
 
-  Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()]).then(response => {
+  Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()])
+  .then(promises => {
     // We have an array response and need to retrieve the data property
     // With the data property, select one randomized response and return it in its appropriate category
-    console.log(response);
+    promises.forEach(promise => {
+      let randomResult = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
+      result.push(randomResult);
+    })
+    // Respond to client with the result
+    res.send(result);
   })
-  res.send('Response successful from /business');
+  .catch(error => {
+    res.send(error);
+  })
 })
 
 // Catch all requests
