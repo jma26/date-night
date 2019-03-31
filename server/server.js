@@ -21,11 +21,16 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// Global axios defaults
+axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
+
 app.post('/business', (req, res) => {
   let parameters = {
     ...req.body
   }
 
+  // Config files for Axios instance
+  // Cuisine config
   let foodConfig = {
     url: '/businesses/search',
     baseURL: 'https://api.yelp.com/v3/businesses/search',
@@ -36,15 +41,38 @@ app.post('/business', (req, res) => {
       location: parameters.location
     }
   }
+  // Drink config
+  let drinkConfig = {
+    url: '/businesses/search',
+    baseURL: 'https://api.yelp.com/v3/businesses/search',
+    method: 'get',
+    params: {
+      term: `${parameters.drink} bars`,
+      limit: 50,
+      location: parameters.location
+    }
+  }
+  // Dessert config
+  let dessertConfig = {
+    url: '/businesses/search',
+    baseURL: 'https://api.yelp.com/v3/businesses/search',
+    method: 'get',
+    params: {
+      term: `${parameters.dessert}`,
+      limit: 50,
+      location: parameters.location
+    }
+  }
 
   // Axios Instances
-  const businessInstance = axios.create(foodConfig)
-  businessInstance.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
+  const businessInstance = axios.create(foodConfig);
+  const drinkInstance = axios.create(drinkConfig);
+  const dessertInstance = axios.create(dessertConfig);
 
-  businessInstance.get().then((response) => {
-    console.log(response.data);
-  }).catch((error) => {
-    console.log(error);
+  Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()]).then(response => {
+    // We have an array response and need to retrieve the data property
+    // With the data property, select one randomized response and return it in its appropriate category
+    console.log(response);
   })
   res.send('Response successful from /business');
 })
