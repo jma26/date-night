@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../../css/App.css';
 
 import { connect } from 'react-redux';
@@ -30,15 +30,22 @@ class App extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
-      const isTop = window.scrollY < 100;
+    document.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    const isTop = window.scrollY < 100;
       if (isTop !== this.state.Top) {
         this.setState({ isTop })
       }
-    });
   }
 
 
@@ -59,10 +66,9 @@ class App extends Component {
     this.props.fetchYelpData(formData);
     this.setState({
       ...initialDateState,
-    })
+      // Redirect to Map component
+    }, this.props.history.push("/map"));
 
-    // Redirect to Map component
-    this.props.history.push("/map");
   }
 
   render() {
