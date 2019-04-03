@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import '../../css/App.css';
 
 import { connect } from 'react-redux';
@@ -60,6 +60,9 @@ class App extends Component {
     this.setState({
       ...initialDateState,
     })
+
+    // Redirect to Map component
+    this.props.history.push("/map");
   }
 
   render() {
@@ -67,22 +70,14 @@ class App extends Component {
       <div className="App">
         <Header isTop={this.state.isTop} />
         <Container fluid className="app__container pl-0 pr-0">
-          <Switch>
-            <Route
-              exact path="/"
-              render={(props) =>
-                <Home
-                  {...props}
-                  location={this.state.location}
-                  drink={this.state.drink}
-                  cuisine={this.state.cuisine}
-                  dessert={this.state.dessert}
-                  onChange={this.handleChange}
-                  onSubmit={this.handleSubmit}
-                />
-              }
-            />
-          </Switch>
+          <Home
+            location={this.state.location}
+            drink={this.state.drink}
+            cuisine={this.state.cuisine}
+            dessert={this.state.dessert}
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+          />
         </Container>
       </div>
     );
@@ -97,4 +92,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
