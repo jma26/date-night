@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
 
 app.post('/business', (req, res) => {
-  const result = [];
+  const result = {};
   let parameters = {
     ...req.body
   }
@@ -66,29 +66,81 @@ app.post('/business', (req, res) => {
   }
 
   // Axios Instances
-  const businessInstance = axios.create(foodConfig);
+  const restaurantInstance = axios.create(foodConfig);
   const drinkInstance = axios.create(drinkConfig);
   const dessertInstance = axios.create(dessertConfig);
 
-  Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()])
-  .then(promises => {
-    // We have an array response and need to retrieve the data property
-    // With the data property, select one randomized response and return it in its appropriate category
-    promises.forEach(promise => {
-      let randomResult = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
-      result.push(randomResult);
-    })
-    // Respond to client with the result
-    res.send(result);
+  // Chaining the promises > Promise.all, that way we can if each promise is fulfilled one by one and if one is rejected - we undergo fast rejection in the catch block
+  drinkInstance.get()
+  .then(promise => {
+    if (!promise.data || promise.data.businesses.length < 1) {
+      throw new Error('Null or undefined promise detected');
+    } else {
+      // console.log(promise.data);
+      result.drink = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
+      return restaurantInstance.get();
+    }
   })
-  .catch(error => {
-    res.send(error);
+  .then(promise => {
+    if (!promise.data || promise.data.businesses.length < 1) {
+      throw new Error('Null or undefined promise detected');
+    } else {
+      // console.log(promise.data);
+      result.restaurant = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
+      return dessertInstance.get();
+    }
   })
+  .then(promise => {
+    if (!promise.data || promise.data.businesses.length < 1) {
+      throw new Error('Null or undefined promise detected');
+    } else {
+      // console.log(promise.data);
+      result.dessert = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
+      result.status = promise.status;
+      res.send(result);
+      // console.log(result);
+    }
+  }).catch(error => {
+    // Null or defined promises in promise chain
+    if (error.message == 'Null or undefined promise detected') {
+      console.log(error.message);
+      res.send({status: 204});
+      // Bad request error such as 400
+    } else if (error.response.status == 400) {
+      console.log(error.response.status);
+      res.send(error.response.status);
+    }
+  });
+
+
+
+
+  // Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()])
+  // .then(promises => {
+  //   // We have an array response and need to retrieve the data property
+  //   // With the data property, select one randomized response and return it in its appropriate category
+  //   promises.forEach(promise => {
+  //     let randomResult = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
+  //     // Check for null or undefined results
+  //     if (randomResult === null) {
+  //       throw 'Results are null or undefined';
+  //     } else {
+  //       result.push(randomResult);
+  //     }
+  //   })
+  //   // Respond to client with the result
+  //   res.send(result);
+  // })
+  // .catch(error => {
+  //   console.log(error.response);
+  //   res.send(error.response.status);
+  // })
 })
 
 // Catch all requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '../build/index.html'));
+  // Need to change to /build pathway for deployment
+  res.sendFile(path.join(__dirname + '../public/index.html'));
 })
 
 app.listen(PORT, () => {
