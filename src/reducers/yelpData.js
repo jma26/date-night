@@ -4,12 +4,14 @@ const yelpData = (state = {}, action) => {
   switch(action.type) {
     case FETCH_YELP_SUCCESS:
       return {
-        status: action.response.status,
-        response: action.response.data,
+        status: action.response.data.status,
+        drink: action.response.data.drink,
+        restaurant: action.response.data.restaurant,
+        dessert: action.response.data.dessert
       }
     case FETCH_YELP_FAIL:
       return {
-        status: action.error.response.status,
+        status: action.error.message,
         hasError: true,
       }
     default:

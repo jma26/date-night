@@ -5,9 +5,16 @@ export const fetchYelpData = (data) => {
   return (dispatch) => {
     return axios.post('/business', data)
     .then(response => {
-      dispatch(fetchYelpSuccess(response));
+      // Check if status is 200 because both status are sent from server.js 'successfully' from res.send**
+      if (response.data.status === 200) {
+        dispatch(fetchYelpSuccess(response));
+      } else if (response.data.status === 204) {
+        console.log(response.data.status);
+        throw new Error('Request returned with no content, status code 204');
+      }
     })
     .catch(error => {
+      console.log(error.name, error.message);
       dispatch(fetchYelpFail(error));
     })
   }
