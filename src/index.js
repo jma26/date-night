@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -9,10 +10,9 @@ import rootReducers from './reducers';
 
 // Bootswatch theme
 import './assets/bootswatch/bootstrap.css';
-
 import './css/index.css';
+
 import App from './components/App/App';
-import Map from './components/Map/Map';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -28,10 +28,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/map" component={Map} />
-      </Switch>
+      <App />
     </BrowserRouter>
   </Provider>
 , document.getElementById('root'));

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import '../../css/App.css';
 
 import { connect } from 'react-redux';
 import { fetchYelpData } from '../../actions';
 
 import Home from '../Home/Home';
-import Header from '../Header/Header';
-
-import { Container } from 'react-bootstrap';
+import Map from '../Map/Map';
+import Error from '../Error/Error';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faWineGlass, faUtensils, faIceCream } from '@fortawesome/free-solid-svg-icons';
@@ -35,6 +34,13 @@ class App extends Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidUpdate(prevProps) {
+    // Render Error component if error is present
+    if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.hasError) {
+      this.props.history.push('/error');
+    }
   }
 
   componentWillUnmount() {
@@ -66,28 +72,38 @@ class App extends Component {
     this.props.fetchYelpData(formData);
     this.setState({
       ...initialDateState,
+    });
       // Redirect to Map component
-    }, this.props.history.push("/map"));
+    // }, this.props.history.push("/map"));
 
   }
 
   render() {
     return (
-      <div className="App">
-        <Header isTop={this.state.isTop} />
-        <Container fluid className="app__container pl-0 pr-0">
-          <Home
-            location={this.state.location}
-            drink={this.state.drink}
-            cuisine={this.state.cuisine}
-            dessert={this.state.dessert}
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-          />
-        </Container>
-      </div>
+        <div className="App">
+            <Switch>
+              <Route exact path="/" render={() =>
+                <Home
+                  isTop={this.state.isTop}
+                  location={this.state.location}
+                  drink={this.state.drink}
+                  cuisine={this.state.cuisine}
+                  dessert={this.state.dessert}
+                  onChange={this.handleChange}
+                  onSubmit={this.handleSubmit}
+                />
+                }
+              />
+              <Route path="/map" component={Map} />
+              <Route path="/error" component={Error} />
+            </Switch>
+        </div>
     );
   }
+}
+
+const mapStateToProps = (state) => {
+  return state;
 }
 
 const mapDispatchToProps = dispatch => {
@@ -98,4 +114,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

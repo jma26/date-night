@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_YELP_KEY}`;
 
 app.post('/business', (req, res) => {
+  console.log('Detecting..../business url route');
   const result = {};
   let parameters = {
     ...req.body
