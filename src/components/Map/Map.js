@@ -35,8 +35,8 @@ class Map extends Component {
   }
 }
 
-const mapStateToProps = {
-
+const mapStateToProps = (state) => {
+  return state;
 }
 
-export default withRouter(connect()(Map));
+export default withRouter(connect(mapStateToProps, null)(Map));
