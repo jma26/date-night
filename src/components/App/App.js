@@ -34,6 +34,11 @@ class App extends Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll);
+    // Prevent refreshing of /map without redux data
+    // Redirect to '/'
+    if (Object.keys(this.props.yelpData).length == 0) {
+      this.props.history.push('/');
+    }
   }
 
   componentDidUpdate(prevProps) {
