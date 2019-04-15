@@ -38,8 +38,13 @@ class App extends Component {
 
   componentDidUpdate(prevProps) {
     // Render Error component if error is present
+    console.log(this.props.yelpData);
     if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.hasError) {
       this.props.history.push('/error');
+    } else if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.status) {
+      if (this.props.yelpData.status === 200) {
+        this.props.history.push('/map');
+      }
     }
   }
 
