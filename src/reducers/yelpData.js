@@ -1,9 +1,11 @@
-import { FETCH_YELP_SUCCESS, FETCH_YELP_FAIL } from '../actions/action_types';
+import { FETCH_YELP_SUCCESS, FETCH_YELP_FAIL, FETCH_YELP_REQUEST } from '../actions/action_types';
 
-const yelpData = (state = {
-  isLoading: true,
-}, action) => {
+const yelpData = (state = {}, action) => {
   switch(action.type) {
+    case FETCH_YELP_REQUEST:
+      return {
+        isFetching: action.boolean
+      }
     case FETCH_YELP_SUCCESS:
       return {
         isFetching: false,

@@ -1,8 +1,9 @@
-import { FETCH_YELP_SUCCESS, FETCH_YELP_FAIL } from './action_types';
+import { FETCH_YELP_SUCCESS, FETCH_YELP_FAIL, FETCH_YELP_REQUEST } from './action_types';
 import axios from 'axios';
 
 export const fetchYelpData = (data) => {
   return (dispatch) => {
+    dispatch(fetchYelpRequest(true));
     return axios.post('/business', data)
     .then(response => {
       // Check if status is 200 because both status are sent from server.js 'successfully' from res.send**
@@ -28,4 +29,9 @@ export const fetchYelpSuccess = (response) => ({
 export const fetchYelpFail = (error) => ({
   type: FETCH_YELP_FAIL,
   error
+})
+
+export const fetchYelpRequest = (boolean) => ({
+  type: FETCH_YELP_REQUEST,
+  boolean
 })
