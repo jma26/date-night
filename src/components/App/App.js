@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchYelpData } from '../../actions';
 
 import Home from '../Home/Home';
-import Map from '../Map/Map';
+import MapContainer from '../Map/MapContainer';
 import Error from '../Error/Error';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -46,10 +46,6 @@ class App extends Component {
     console.log(this.props.yelpData);
     if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.hasError) {
       this.props.history.push('/error');
-    } else if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.status) {
-      if (this.props.yelpData.status === 200) {
-        this.props.history.push('/map');
-      }
     }
   }
 
@@ -83,9 +79,7 @@ class App extends Component {
     this.setState({
       ...initialDateState,
     });
-      // Redirect to Map component
-    // }, this.props.history.push("/map"));
-
+    this.props.history.push('/map');
   }
 
   render() {
@@ -104,7 +98,7 @@ class App extends Component {
                 />
                 }
               />
-              <Route path="/map" component={Map} />
+              <Route path="/map" component={MapContainer} />
               <Route path="/error" component={Error} />
             </Switch>
         </div>

@@ -14,7 +14,7 @@ class Map extends Component {
     // Prevents refreshing on '/map' that will end up throwing an undefined error
     if (!this.props.drink || !this.props.restaurant || !this.props.dessert) {
       this.props.history.push('/');
-    } else {
+    } else if (!this.props.isFetching && this.props.drink && this.props.restaurant && this.props.dessert) {
       window.L.mapquest.key = `${process.env.REACT_APP_MAPQUEST_KEY}`;
       var map = window.L.mapquest.map('map', {
         center: [37.7749, -122.4194],
@@ -44,7 +44,7 @@ class Map extends Component {
 
     return (
       <div className="Map">
-        <div id="map" style={mapStyles}></div>
+        <div id="map" style={mapStyles} />
       </div>
     )
   }

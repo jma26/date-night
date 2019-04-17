@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../css/Loading.css';
 
 class Loading extends Component {
   constructor(props) {
@@ -9,6 +10,26 @@ class Loading extends Component {
     return (
       <div className="Loading">
         <h1>Loading now</h1>
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
       </div>
     )
   }
