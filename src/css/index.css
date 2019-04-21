@@ -3,3 +3,8 @@
     margin: 0px;
     padding: 0px;
 }
+
+a:hover, a:active, a:visited, a:focus {
+  color: #0000EE;
+  text-decoration: none;
+}
