@@ -1,0 +1,37 @@
+.Map {
+  position: relative;
+}
+
+#map {
+  z-index: 1;
+}
+
+.dialog__modal-container {
+  position: absolute;
+  z-index: 2;
+  color: #FFF;
+}
+
+.Map__drink-dialog {
+  background-color: #1FC715;
+}
+
+.Map__restaurant-dialog {
+  background-color: #E84393;
+}
+
+.Map__dessert-dialog {
+  background-color: #E9304F;
+}
+
+.dialog__modal {
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  max-width: 640px;
+  margin-top: 24px;
+  padding: 4px 8px;
+}
+
+.dialog__link {
+  color: #0000EE;
+}

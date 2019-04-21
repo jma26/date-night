@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../css/About.css';
+import '../../css/Map.css';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -63,7 +63,7 @@ class Map extends Component {
           title: 'Restaurant'
         },
         routeRibbon: {
-          color: "#2aa6ce",
+          color: "#2AA6CE",
           opacity: 1.0,
           showTraffic: false
         },
@@ -84,13 +84,28 @@ class Map extends Component {
   }
 
   render() {
+
     const mapStyles = {
       height: '100vh',
       width: '100vw'
     }
 
+    const drinkDialog = this.props.drink ?
+    <p className="Map__drink-dialog dialog__modal">Drink at <a href={this.props.drink.url} target="_blank" rel="noopener noreferrer" className="dialog__link">{this.props.drink.name}</a></p> : null
+
+    const restaurantDialog = this.props.restaurant ?
+    <p className="Map__restaurant-dialog dialog__modal">Dine at <a href={this.props.restaurant.url} target="_blank" rel="noopener noreferrer" className="dialog__link">{this.props.restaurant.name}</a></p> : null
+
+    const dessertDialog = this.props.dessert ?
+    <p className="Map__dessert-dialog dialog__modal">Dessert at <a href={this.props.dessert.url} target="_blank" rel="noopener noreferrer" className="dialog__link">{this.props.dessert.name}</a></p> : null
+
     return (
       <div className="Map">
+        <div className="dialog__modal-container">
+          {drinkDialog}
+          {restaurantDialog}
+          {dessertDialog}
+        </div>
         <div id="map" style={mapStyles} />
       </div>
     )
