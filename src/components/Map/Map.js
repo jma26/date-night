@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../css/Map.css';
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Map extends Component {
   constructor(props) {
@@ -107,6 +107,9 @@ class Map extends Component {
           {dessertDialog}
         </div>
         <div id="map" style={mapStyles} />
+        <div className="restart__modal">
+          <Link to="/">Restart</Link>
+        </div>
       </div>
     )
   }

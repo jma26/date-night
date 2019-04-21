@@ -6,32 +6,49 @@
   z-index: 1;
 }
 
-.dialog__modal-container {
+.dialog__modal-container, .restart__modal {
+  color: #FFF;
   position: absolute;
   z-index: 2;
-  color: #FFF;
 }
 
 .Map__drink-dialog {
   background-color: #1FC715;
+  box-shadow: 0px 0px 4px 2px #000;
 }
 
 .Map__restaurant-dialog {
   background-color: #E84393;
+  box-shadow: 0px 0px 4px 2px #000;
 }
 
 .Map__dessert-dialog {
   background-color: #E9304F;
+  box-shadow: 0px 0px 4px 2px #000;
 }
 
 .dialog__modal {
   font-size: 24px;
   letter-spacing: 0.48px;
   max-width: 640px;
+  margin-left: 24px;
   margin-top: 24px;
   padding: 4px 8px;
 }
 
 .dialog__link {
   color: #0000EE;
+}
+
+.restart__modal {
+  border: 1px solid #000;
+  background-color: #FFF;
+  bottom: 16px;
+  display: inline-block;
+  right: 16px;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 4px 2px #000;
 }
