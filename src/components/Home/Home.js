@@ -11,6 +11,13 @@ class Home extends Component {
     super(props);
   }
 
+  scrollToBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
   render() {
     return (
       <div className="Home">
@@ -19,7 +26,7 @@ class Home extends Component {
           <div className="home__container">
             <h1 className="home__headline">Plan your perfect night</h1>
             <p className="home__content">With DateNight, planning becomes quick and easy</p>
-            <input className="home__button" type="button" value="Try Now!" />
+            <input className="home__button" type="button" value="Try Now!" onClick={this.scrollToBottom} />
           </div>
           <About />
           <FormInput {...this.props} />
