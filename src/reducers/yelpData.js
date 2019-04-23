@@ -8,7 +8,7 @@ const yelpData = (state = {}, action) => {
       }
     case FETCH_YELP_SUCCESS:
       return {
-        isFetching: false,
+        isFetching: true,
         status: action.response.data.status,
         drink: action.response.data.drink,
         restaurant: action.response.data.restaurant,

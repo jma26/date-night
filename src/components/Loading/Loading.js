@@ -9,7 +9,11 @@ class Loading extends Component {
   render() {
     return (
       <div className="Loading">
-        <h1>Loading now</h1>
+        <h1 className="Loading__heading">Loading
+          <span className="Loading__dot-indicator">.</span>
+          <span className="Loading__dot-indicator">.</span>
+          <span className="Loading__dot-indicator">.</span>
+        </h1>
         <div className="Loading__spinner">
           <div />
           <div />
