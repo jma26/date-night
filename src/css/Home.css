@@ -3,7 +3,9 @@
   rgba(0, 0, 0, 0.5),
   rgba(0, 0, 0, 0.5)),
     url('../assets/imgs/sunset-kiss.jpg');
-  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #FDF6E3;
   height: 100vh;
   padding: 240px 128px 128px;
@@ -31,4 +33,53 @@
   opacity: 0.9;
   background-color: #E83E8C;
   color: #FFF;
+}
+
+/* X-SMALL */
+@media only screen and (max-width: 576px) {
+  .home__container {
+    background-attachment: initial;
+    background-size: 100% 100%;
+    height: 50vh;
+    padding: 80px 40px;
+  }
+  .home__headline {
+    font-size: 24px;
+  }
+  .home__content {
+    font-size: 14px;
+  }
+  .home__button {
+    font-size: 14px;
+  }
+}
+
+/* SMALL */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .home__container {
+    background-attachment: initial;
+    background-size: 100% 100%;
+    height: 60vh;
+    padding: 80px 40px;
+  }
+}
+
+/* MEDIUM */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .home__container {
+    background-attachment: initial;
+    background-size: 100% 100%;
+    height: 60vh;
+    padding: 96px;
+  }
+}
+
+/* LARGE */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .home__container {
+    background-attachment: initial;
+    background-size: 100% 100%;
+    height: 70vh;
+    padding: 96px;
+  }
 }

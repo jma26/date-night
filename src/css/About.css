@@ -1,16 +1,54 @@
 .About {
   background-color: #FCF6C5;
-  padding: 64px 0px;
-}
-
-.about__row--title {
-  margin-bottom: 64px;
+  padding-top: 64px;
+  padding-bottom: 40px;
 }
 
 .about__headline, .about__content-title, .about__content-text {
   color: #000;
 }
 
+.about__content-container {
+  padding: 24px;
+}
+
+.about__content-title, .about__content-text {
+  margin: 0px;
+}
+
 .about__icon {
-  margin-bottom: 24px;
+  margin-bottom: 8px;
+}
+
+/* X-SMALL */
+@media only screen and (max-width: 576px) {
+  .About {
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+  .about__headline {
+    font-size: 24px;
+  }
+  .about__content-title {
+    font-size: 20px;
+  }
+  .about__content-text {
+    font-size: 14px;
+  }
+}
+
+/* MEDIUIM */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .About {
+    height: 40vh;
+    padding: 64px;
+  }
+}
+
+/* LARGE */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .About {
+    height: 30vh;
+    padding: 40px;
+  }
 }
