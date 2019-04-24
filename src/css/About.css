@@ -1,7 +1,7 @@
 .About {
   background-color: #FCF6C5;
-  padding-top: 64px;
-  padding-bottom: 40px;
+  height: 50vh;
+  padding: 112px;
 }
 
 .about__headline, .about__content-title, .about__content-text {
@@ -23,8 +23,8 @@
 /* X-SMALL */
 @media only screen and (max-width: 576px) {
   .About {
-    padding-top: 48px;
-    padding-bottom: 24px;
+    height: initial;
+    padding: 48px 0px 24px 0px;
   }
   .about__headline {
     font-size: 24px;
@@ -48,7 +48,7 @@
 /* LARGE */
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .About {
-    height: 30vh;
+    height: 35vh;
     padding: 40px;
   }
 }

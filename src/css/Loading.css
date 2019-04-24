@@ -122,19 +122,11 @@
   }
 }
 
-@media only screen and (max-width: 599px) {
+/* X-SMALL */
+@media only screen and (max-width: 576px) {
   .Loading__spinner {
     width: 75vw;
   }
-}
-
-@media only screen and (max-width: 400px) {
-  .Loading__heading {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (max-width: 340px) {
   .Loading__heading {
     font-size: 24px;
   }

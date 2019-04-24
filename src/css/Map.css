@@ -6,6 +6,10 @@
   z-index: 1;
 }
 
+.dialog__modal-container {
+  padding: 0px 24px;
+}
+
 .dialog__modal-container, .restart__modal {
   color: #FFF;
   position: absolute;
@@ -30,8 +34,7 @@
 .dialog__modal {
   font-size: 24px;
   letter-spacing: 0.48px;
-  max-width: 640px;
-  margin-left: 24px;
+  max-width: 78vw;
   margin-top: 24px;
   padding: 4px 8px;
 }
@@ -51,4 +54,12 @@
   padding: 4px 8px;
   text-transform: uppercase;
   box-shadow: 0px 0px 4px 2px #000;
+}
+
+
+/* X-SMALL */
+@media only screen and (max-width: 576px) {
+  .dialog__modal, .restart__modal {
+    font-size: 16px;
+  }
 }
