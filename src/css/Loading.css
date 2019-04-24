@@ -7,7 +7,7 @@
 
 .Loading__heading {
   position: absolute;
-  bottom: 50%;
+  bottom: 47%;
   text-transform: uppercase;
 }
 
@@ -119,5 +119,23 @@
   }
   100% {
       opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .Loading__spinner {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Loading__heading {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .Loading__heading {
+    font-size: 24px;
   }
 }
