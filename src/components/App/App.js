@@ -20,6 +20,8 @@ const initialDateState = {
   dessert: 'Ice cream',
 }
 
+var formData = {};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +72,7 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = {
+    formData = {
       location: this.state.location,
       drink: this.state.drink,
       cuisine: this.state.cuisine,
@@ -79,6 +82,12 @@ class App extends Component {
     this.setState({
       ...initialDateState,
     });
+    this.props.history.push('/map');
+  }
+
+  handleRefresh() {
+    console.log(formData);
+    this.props.fetchYelpData(formData);
     this.props.history.push('/map');
   }
 
@@ -98,7 +107,12 @@ class App extends Component {
                 />
                 }
               />
-              <Route path="/map" component={MapContainer} />
+              <Route path="/map" render={() =>
+                <MapContainer
+                  onRefresh={this.handleRefresh}
+                />
+                }
+              />
               <Route path="/error" component={Error} />
             </Switch>
         </div>

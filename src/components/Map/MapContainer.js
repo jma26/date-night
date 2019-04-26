@@ -15,7 +15,7 @@ class MapContainer extends Component {
     return (
       <div className="MapContainer">
         {
-          this.props.isFetching ? <Loading /> : <Map />
+          this.props.isFetching ? <Loading /> : <Map onRefresh={this.props.onRefresh} />
         }
       </div>
     )
