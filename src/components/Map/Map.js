@@ -107,12 +107,8 @@ class Map extends Component {
           {dessertDialog}
         </div>
         <div id="map" style={mapStyles} />
-        <div className="restart__modal">
-          <Link to="/">Restart</Link>
-        </div>
-        <div className="refresh__modal">
-          <Link to="/refresh">Refresh</Link>
-        </div>
+        <Link to="/" className="restart__btn">Restart</Link>
+        <input type="button" value="Refresh" className="refresh__btn" onClick={this.props.onRefresh} />
       </div>
     )
   }

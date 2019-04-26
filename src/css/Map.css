@@ -10,7 +10,7 @@
   padding: 0px 24px;
 }
 
-.dialog__modal-container, .restart__modal, .refresh__modal {
+.dialog__modal-container, .restart__link, .refresh__btn {
   color: #FFF;
   position: absolute;
   z-index: 2;
@@ -43,10 +43,11 @@
   color: #0000EE;
 }
 
-.restart__modal {
+.restart__link {
   border: 1px solid #000;
   background-color: #FFF;
   bottom: 16px;
+  color: #0000EE;
   display: inline-block;
   right: 158px;
   font-size: 24px;
@@ -56,10 +57,11 @@
   box-shadow: 0px 0px 4px 2px #000;
 }
 
-.refresh__modal {
+.refresh__btn {
   border: 1px solid #000;
   background-color: #FFF;
   bottom: 16px;
+  color: #0000EE;
   display: inline-block;
   right: 16px;
   font-size: 24px;
@@ -72,7 +74,7 @@
 
 /* X-SMALL */
 @media only screen and (max-width: 576px) {
-  .dialog__modal, .restart__modal, .refresh__modal {
+  .dialog__modal, .restart__link, .refresh__btn {
     font-size: 16px;
   }
 }
