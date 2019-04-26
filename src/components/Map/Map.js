@@ -110,6 +110,9 @@ class Map extends Component {
         <div className="restart__modal">
           <Link to="/">Restart</Link>
         </div>
+        <div className="refresh__modal">
+          <Link to="/refresh">Refresh</Link>
+        </div>
       </div>
     )
   }
