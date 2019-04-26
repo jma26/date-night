@@ -30,9 +30,9 @@ class App extends Component {
       ...initialDateState
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -62,7 +62,6 @@ class App extends Component {
         this.setState({ isTop })
       }
   }
-
 
   handleChange(e) {
     this.setState({

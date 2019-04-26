@@ -107,7 +107,7 @@ class Map extends Component {
           {dessertDialog}
         </div>
         <div id="map" style={mapStyles} />
-        <Link to="/" className="restart__link">Restart</Link>
+        <Link to="/" className="restart__link" onClick={this.props.history.goBack} >Restart</Link>
         <input type="button" value="Refresh" className="refresh__btn" onClick={this.props.onRefresh} />
       </div>
     )
