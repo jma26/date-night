@@ -13,7 +13,7 @@ class Header extends Component {
       <div className="Header">
           <Navbar variant="dark" fixed="top" expand="lg" className={this.props.isTop ? 'navbar--fixed' : 'navbar--scroll'}>
             <Container>
-              <Navbar.Brand href="#home">DateNight</Navbar.Brand>
+              <Navbar.Brand href="#home" onClick={this.props.onScrollToTop} >DateNight</Navbar.Brand>
               <Navbar.Toggle aria-controls="navbar-toggler" />
               <Navbar.Collapse id="navbar-toggler">
                 <Nav className="ml-auto">
