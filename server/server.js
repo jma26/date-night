@@ -113,35 +113,13 @@ app.post('/business', (req, res) => {
     }
   });
 
-
-
-
-  // Promise.all([businessInstance.get(), drinkInstance.get(), dessertInstance.get()])
-  // .then(promises => {
-  //   // We have an array response and need to retrieve the data property
-  //   // With the data property, select one randomized response and return it in its appropriate category
-  //   promises.forEach(promise => {
-  //     let randomResult = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
-  //     // Check for null or undefined results
-  //     if (randomResult === null) {
-  //       throw 'Results are null or undefined';
-  //     } else {
-  //       result.push(randomResult);
-  //     }
-  //   })
-  //   // Respond to client with the result
-  //   res.send(result);
-  // })
-  // .catch(error => {
-  //   console.log(error.response);
-  //   res.send(error.response.status);
-  // })
 })
 
 // Catch all requests
 app.get('*', (req, res) => {
   // Need to change to /build pathway for deployment
-  res.sendFile(path.join(__dirname + '../public/index.html'));
+  console.log(res);
+  res.sendFile(path.join(__dirname + './public', index.html));
 })
 
 app.listen(PORT, () => {
