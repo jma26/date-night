@@ -118,8 +118,7 @@ app.post('/business', (req, res) => {
 // Catch all requests
 app.get('*', (req, res) => {
   // Need to change to /build pathway for deployment
-  console.log(res);
-  res.sendFile(path.join(__dirname + './public', index.html));
+  res.sendFile(path.join(__dirname + '/../public', index.html));
 })
 
 app.listen(PORT, () => {
