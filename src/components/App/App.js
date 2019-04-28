@@ -46,7 +46,6 @@ class App extends Component {
 
   componentDidUpdate(prevProps) {
     // Render Error component if error is present
-    console.log(this.props.yelpData);
     if (prevProps.yelpData !== this.props.yelpData && this.props.yelpData.hasError) {
       this.props.history.push('/error');
     }
@@ -85,7 +84,6 @@ class App extends Component {
   }
 
   handleRefresh() {
-    console.log(formData);
     this.props.fetchYelpData(formData);
     this.props.history.push('/map');
   }

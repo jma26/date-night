@@ -77,7 +77,6 @@ app.post('/business', (req, res) => {
     if (!promise.data || promise.data.businesses.length < 1) {
       throw new Error('Null or undefined promise detected');
     } else {
-      // console.log(promise.data);
       result.drink = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
       return restaurantInstance.get();
     }
@@ -86,7 +85,6 @@ app.post('/business', (req, res) => {
     if (!promise.data || promise.data.businesses.length < 1) {
       throw new Error('Null or undefined promise detected');
     } else {
-      // console.log(promise.data);
       result.restaurant = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
       return dessertInstance.get();
     }
@@ -95,20 +93,16 @@ app.post('/business', (req, res) => {
     if (!promise.data || promise.data.businesses.length < 1) {
       throw new Error('Null or undefined promise detected');
     } else {
-      // console.log(promise.data);
       result.dessert = promise.data.businesses[Math.floor((Math.random() * promise.data.businesses.length) + 1)];
       result.status = promise.status;
       res.send(result);
-      // console.log(result);
     }
   }).catch(error => {
     // Null or defined promises in promise chain
     if (error.message == 'Null or undefined promise detected') {
-      console.log(error.message);
       res.send({status: 204});
       // Bad request error such as 400
     } else if (error.response.status == 400) {
-      console.log(error.response.status);
       res.send(error.response.status);
     }
   });
@@ -118,7 +112,6 @@ app.post('/business', (req, res) => {
 // Catch all requests
 app.get('*', (req, res) => {
   // Need to change to /build pathway for deployment
-  console.log(res);
   res.sendFile(path.join(__dirname + './public', index.html));
 })
 
