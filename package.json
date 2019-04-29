@@ -9,8 +9,8 @@
     "server:dev": "nodemon server.js",
     "client:build": "cd client && npm run build",
     "server:build": "node server.js",
-    "heroku-pre-build": "npm install && cd client && npm install",
-    "heroku-post-build": "npm-run-all -p -r client:build server:build",
+    "heroku-prebuild": "npm install && cd client && npm install",
+    "heroku-postbuild": "npm-run-all -p -r client:build server:build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
