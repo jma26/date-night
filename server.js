@@ -13,7 +13,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
 // Serve static files from client-side
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Handle cors
 app.use(cors());
@@ -112,7 +112,7 @@ app.post('/business', (req, res) => {
 // Catch all requests
 app.get('*', (req, res) => {
   // Need to change to /build pathway for deployment
-  res.sendFile(path.join(__dirname + '/../build', index.html));
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
 })
 
 app.listen(PORT, () => {
