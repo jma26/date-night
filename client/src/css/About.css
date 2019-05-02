@@ -37,6 +37,14 @@
   }
 }
 
+/* Small */
+@media only screen and (min-width: 577px) and (max-width: 767px) {
+  .About {
+    height: initial;
+    padding: 64px;
+  }
+}
+
 /* MEDIUIM */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .About {
