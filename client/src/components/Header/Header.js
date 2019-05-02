@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../css/Header.css';
 
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 class Header extends Component {
@@ -19,7 +20,7 @@ class Header extends Component {
                 <Nav className="ml-auto">
                   {/* <Nav.Link href="#home">Home</Nav.Link>
                   <Nav.Link href="#link">About</Nav.Link> */}
-                  <Nav.Link href="#contact">Contact</Nav.Link>
+                  <Link to="/contact" className="nav-link nav-link__contact">Contact</Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
