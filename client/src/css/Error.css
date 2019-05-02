@@ -10,3 +10,76 @@
 .Error__404 {
   font-size: 480px;
 }
+
+.Error__content {
+  font-size: 48px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.Error__retry-link {
+  background-color: #FCF6C5;
+  border-color: #FCF6C5;
+  border-radius: 16px;
+  color: #000;
+  font-size: 24px;
+  letter-spacing: 1.2px;
+  margin-top: 16px;
+  padding: 16px 24px;
+}
+
+.Error__retry-link:active {
+  -webkit-box-shadow: inset 0px 0px 8px #2AA198;
+  -moz-box-shadow: inset 0px 0px 8px #2AA198;
+  box-shadow: inset 0px 0px 8px #2AA198;
+}
+
+/* X-SMALL */
+@media only screen and (max-width: 576px) {
+  .Error__404 {
+    font-size: 140px;
+  }
+  .Error__content {
+    font-size: 16px;
+  }
+  .Error__retry-link {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+}
+
+/* SMALL */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .Error__404 {
+    font-size: 300px;
+  }
+  .Error__content {
+    font-size: 24px;
+  }
+  .Error__retry-link {
+    font-size: 18px;
+  }
+}
+
+/* MEDIUM */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .Error__404 {
+    font-size: 400px;
+  }
+  .Error__content {
+    font-size: 32px;
+  }
+  .Error__retry-link {
+    font-size: 24px;
+  }
+}
+
+/* LARGE */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .Error__content {
+    font-size: 40px;
+  }
+  .Error__retry-link {
+    font-size: 30px;
+  }
+}
